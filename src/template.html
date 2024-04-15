@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar">
+@@include('html/_head.htm',{
+"title":"template"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+
+			<section class="page__main-banner main-banner main-banner--inner">
+				<div class="nuar-blk"></div>
+				<div class="main-banner__container">
+					<div class="main-banner__descp">
+						<div class="main-banner__header">
+							<nav class="breadcrumbs">
+								<ul class="breadcrumbs__list">
+									<li class="breadcrumbs__item">
+										<a href="home.html" class="breadcrumbs__link">صفحه اصلی</a>
+									</li>
+									<li class="breadcrumbs__item">
+										<span class="breadcrumbs__current">مقالات روسیه</span>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<div class="main-banner__body">
+							<h1>مقالات</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="page__template template">
+				<div class="template__container">
+
+					<div class="template__main main-template">
+
+						<sidebar class="main-template__sidebar sidebar-template">
+							<div class="sidebar-template__body">
+
+								<div class="sidebar-template__item">
+									<div class="sidebar-template__col">
+										<div class="sidebar-template__filters filters-sidebar">
+											filters
+										</div>
+									</div>
+								</div>
+
+								<div class="sidebar-template__item">
+									<div class="sidebar-template__col">
+										<div class="sidebar-template__tizers tizers">
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">ویزای <br>روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/03.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">تورهای <br>روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/04.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">هتل های <br>روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/18.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">حمل و نقل <br>در روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/01.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">بیمه در روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/19.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">فعالیت ها <br>در روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/20.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+											<a href="#" class="tizers__item">
+												<div class="tizers__text">تورگاید در <br>روسیه</div>
+												<div class="tizers__img">
+													<img src="img/icons/content/21.svg" loading="lazy" alt="Картинка">
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="sidebar-template__col">
+										<div class="sidebar-template__contacts contacts-sidebar">
+											<a href="tel:+98211373"
+												class="contacts-sidebar__item phone-contact phone-contact--big">
+												<svg>
+													<use xlink:href="img/icons/sprite.svg#phone"></use>
+												</svg>
+												<span>+98 211373</span>
+											</a>
+											<a href="tel:+98 1343425970" class="contacts-sidebar__item phone-contact">
+												<svg>
+													<use xlink:href="img/icons/sprite.svg#callback"></use>
+												</svg>
+												<span>+98 1343425970</span>
+											</a>
+											<a href="https://telegram.org" class="contacts-sidebar__item phone-contact">
+												<svg>
+													<use xlink:href="img/icons/sprite.svg#message"></use>
+												</svg>
+												<span>+98 1343425970</span>
+											</a>
+											<a href="mailto:info@shomaltour.com"
+												class="contacts-sidebar__item phone-contact phone-contact--blue">
+												<svg>
+													<use xlink:href="img/icons/sprite.svg#email"></use>
+												</svg>
+												info@shomaltour.com
+											</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</sidebar>
+
+						<div class="main-template__body">
+							Контент
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

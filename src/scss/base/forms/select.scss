@@ -1,0 +1,142 @@
+// <SELECT>
+// Снипет (HTML): sel
+.select {
+	position: relative;
+	direction: rtl;
+	// .select__body
+	&__body {
+		position: relative;
+	}
+	// .select__title
+	&__title {
+		font-size: rem(20);
+		font-weight: 400;
+		line-height: math.div(23.7, 20);
+		text-align: right;
+		color: #C2C2C2;
+		text-align: left;
+		border: 1px solid #C2C2C2;
+		background-color: #fff;
+		cursor: pointer;
+		width: 100%;
+		border-radius: rem(10);
+	}
+	// .select__value
+	&__value {
+		direction: rtl;
+		text-align: right;
+		display: flex;
+		align-items: center;
+		min-height: rem(48);
+		padding: rem(12) rem(16);
+		gap: rem(10);
+		> * {
+			flex: 1 1 auto;
+		}
+		&:after {
+			content: "";
+			flex: 0 0 rem(15);
+			height: 9px;
+			transition: $mainTransition;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-size: contain;
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEzIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik02LjUgNy41TDAuMDA0ODA5MDIgMC43NUwxMi45OTUyIDAuNzUwMDAxTDYuNSA3LjVaIiBmaWxsPSIjNDQ0NDQ0Ii8+Cjwvc3ZnPgo=');
+			._select-open & {
+				transform: rotate(-180deg);
+			}
+		}
+		&._select-pseudo-label {
+			&::before {
+				content: attr(data-pseudo-label);
+				opacity: 0.5;
+			}
+		}
+	}
+	// .select__text
+	&__text {
+		flex: 1 1 auto;
+	}
+	&__input {
+		width: 100%;
+		background-color: transparent;
+		height: 100%;
+	}
+	// .select__options
+	&__options {
+		direction: rtl;
+		color: #000;
+		position: absolute;
+		top: rem(40);
+		border-radius: 0 0 rem(10) rem(10);
+		min-width: 100%;
+		left: 0;
+		background-color: #fff;
+		border-top: 0;
+		border: 1px solid #C2C2C2;
+		border-top: 0;
+		padding: 10px 0px 5px 0px;
+	}
+	// .select__scroll
+	&__scroll {
+		overflow-y: auto;
+		overflow-x: hidden;
+		// Максимальная высота
+		max-height: 200px;
+		// Стили скроллбара
+		.simplebar-scrollbar {
+			&::before {
+				//opacity: 1;
+			}
+		}
+	}
+	// .select__option
+	&__option {
+		width: 100%;
+		text-align: right;
+		cursor: pointer;
+		padding: 5px 15px;
+		color: inherit;
+		&._select-selected {
+			background-color: #eee;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background: #d9d9d9;
+			}
+		}
+	}
+
+	// Конструкция дополнительных данных
+	&__row {
+		display: inline-flex;
+		align-items: center;
+	}
+	&__asset {
+	}
+	&__text {
+	}
+
+	// Состояния селекта
+	&._select-open {
+		z-index: 5;
+	}
+	&._select-disabled {
+	}
+	&._select-active {
+	}
+	&._select-focus {
+	}
+	&._select-multiple {
+	}
+	&._select-checkbox {
+	}
+}
+
+// Тег
+._select-tag {
+	cursor: pointer;
+}

@@ -1,0 +1,410 @@
+@use "sass:math";
+
+// Подключение миксинов ===========================================================================================================================================================================================================================================================================
+@import "base/mixins";
+
+// Подключение шрифтов ===========================================================================================================================================================================================================================================================================
+//&display=swap - добавить при подключении через плагин
+@import url("https://fonts.googleapis.com/css?family=Rubik:regular,500,600,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:regular&display=swap");
+
+// Подключить если есть локальные файлы шрифтов
+//@import "fonts/fonts";
+
+// Подключение иконочных шрифтов ==============================================================================================================================================================================================================================================================================
+// Подключить если есть файл иконочного шрифта
+@import "fonts/icons";
+
+// Шрифт по умолчанию ==============================================================================================================================================================================================================================================================================
+$fontFamily: "Rubik";
+$fontSize: rem(20); // где 14(px) - размер шрифта по умолчанию из макета
+
+// Основные цвета
+$mainColor: #444; // Цвет шрифта по умолчанию 
+
+// $blueColor: #120B8D;
+// $redColor: #FF2E00;
+// $greenColor: #00BF36; 
+// $darkColor: #02002080;
+// $lightGrey: #F0F2F8;
+// $mediumGrey: #120B8D33;
+
+// Анимации
+$mainTransition: all 0.4s ease 0s; // Главная анимация
+
+// НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1280;
+// Общий отступ у контейнера 
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Обнуление и общие параметры ============================================================================================================================================================================================== =============================================================================================== ===============================================================================================
+@import "base/null";
+
+body {
+	font-weight: 400;
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+	}
+	// Сайт загружен
+	.loaded & {
+
+	}
+}
+
+// Оболочка ============================================================================================================================================================================================================================================================================================================================================================================================================================================
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	// overflow: hidden;
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+.page {
+	padding-bottom: rem(40);
+	@media (min-width:em(1025)){
+		padding-top: rem(180);
+	}
+}
+// Ограничивающий контейнер ======================================================================================================================================================================================================================
+
+/*
+(i) Стили будут применяться ко 
+всем классам содержащим *__container
+Например header__container, main__container и т.д.
+Снипет (HTML): cnt
+*/
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 rem(math.div($containerPadding, 2));
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+
+// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
+// Для подключения/отключения конкретных стилей смотри base.scss
+@import "base";
+
+// Подключение стилей общих элементов проекта
+@import "common";
+
+// Подключение стилей отдельных блоков
+@import "header";
+@import "footer";
+
+// Подключение стилей отдельных страниц
+@import "home";
+@import "main-banner";
+@import "ui";
+@import "modal";
+@import "info";
+@import "partners"; 
+@import "tours"; 
+@import "application"; 
+@import "template"; 
+@import "articles";
+@import "content";
+@import "detail";
+@import "visa";
+@import "details";
+@import "transfer";
+@import "trains";
+//========================================================================================================================================================
+
+h1 {
+	font-family: "Rubik";
+	font-size: rem(64);
+	font-weight: 700;
+	line-height: math.div(76.8, 64);
+	color: #fff;
+}
+h2 {
+	font-family: "Rubik";
+	@include adaptiveValue("font-size", 48, 28);
+	font-weight: 700;
+	line-height: math.div(56, 48);
+}
+h3 {
+	font-family: "Rubik";
+	@include adaptiveValue("font-size", 40, 28);
+	font-weight: 700;
+	line-height: math.div(40, 32);
+}
+//========================================================================================================================================================
+
+// .page__main-banner {
+// 	// .page__main-banner
+// 	&__main-banner {
+// 	}
+// 	.main-banner__body {
+// 		max-width: rem(843);
+// 		width: 100%;
+// 		text-align: center;
+// 		h1 {
+// 			@include adaptiveValue("font-size", 64, 22);
+// 			font-weight: 700;
+// 			line-height: math.div(76.8, 64);
+// 		}
+// 	}
+// }
+
+.page__title {
+	@include adaptiveValue("margin-bottom", 48, 20);
+}
+
+.page__info {
+	padding: rem(64) 0 40px 0;
+	@include adaptiveValue("padding-top", 64, 45);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__info-double {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__partners {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__tours {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__hotels {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__events {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__articles {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__regions {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__application {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__template {
+	@include adaptiveValue("padding-top", 40, 14);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__content {
+	&:not(:last-child){
+		@include adaptiveValue("margin-bottom", 56, 40);
+	}
+}
+
+.page__notification-content {
+	&:not(:last-child){
+		@include adaptiveValue("margin-bottom", 57, 36);
+	}
+}
+
+.page__annotation {
+	&:not(:last-child){
+		@include adaptiveValue("margin-bottom", 32, 20);
+	}
+}
+
+.page__attractions {
+	&:not(:last-child){
+		margin-bottom: rem(44);
+	}
+}
+
+.page__paggination {
+	margin-top: rem(24); 
+	@media (max-width: em(768)){
+		 display: none; 
+	}
+}
+
+.page__control {
+	&:not(:last-child){
+		margin-bottom: rem(32);
+	}
+}
+
+.page__header {
+	@include adaptiveValue("margin-bottom", 40, 20);
+}
+//========================================================================================================================================================
+
+.page__detail {
+}
+
+.page__share {
+	@include adaptiveValue("margin-bottom", 46, 28);
+}
+//========================================================================================================================================================
+
+.page-visa {
+	.main-banner--inner .main-banner__body h1 {
+		text-align: center;
+  } 
+  .main-banner__top-title {
+	text-align: center;
+  }
+}
+
+.page__types-visas {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__tour-banner {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__cost-table {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page-template__modal {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__descp-details {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__banner-box {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__schedule-excursions {
+	&:not(:last-child){
+		margin-bottom: rem(56);
+	}
+}
+
+.page__info-board {
+	&:not(:last-child){
+		margin-bottom: rem(56);
+	}
+} 
+
+.page__action-board {
+	&:not(:last-child){
+		margin-bottom: rem(40);
+	}
+}
+
+.page__transfer {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__trains-info {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+} 
+
+.middle-container {
+	max-width: rem(976);
+	margin: 0px auto;
+}
+
+.page__stages {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__actions {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.page__article-sl {
+	@include adaptiveValue("padding-bottom", 40, 20);
+}
+
+.swiper-slide, swiper-slide {
+	display: flex !important ;
+}
+
+.page__text-info {
+	@include adaptiveValue("padding-top", 40, 20);
+	@include adaptiveValue("padding-bottom", 40, 20);
+}

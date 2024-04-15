@@ -1,0 +1,66 @@
+//<BUTTONS (a.btn+tab)>
+// Снипет (HTML): btn
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: rem(9) rem(30);
+	font-family: Rubik;
+	// font-size: rem(24);
+	@include adaptiveValue("font-size", 24, 14);
+	font-weight: 700;
+	line-height: math.div(38.4, 24);
+	color: #fff;
+	background-color: #FF6A00;
+	border-radius: rem(10);
+	transition: $mainTransition;
+
+	@media (any-hover: hover) {
+	&:hover {
+		background-color: #0587D6;
+	}
+	}
+	&:active {
+		transition: all 0.2s ease 0s;
+		background: #EB4701;
+	}
+	
+	&.fw {
+		width: 100%;
+	}
+	&.btn--blue{
+		background: linear-gradient(0deg, #017AC3, #017AC3),linear-gradient(313.3deg, #017AC3 -53.88%, #65CFF0 119.28%);
+		&:active {
+			transition: all 0.2s ease 0s;
+			background: #EB4701;
+		}
+	}
+	&.btn--light {
+		color: #0587D6;
+		background: #E7F2FF;
+	}
+}
+
+.btn--pdf {
+	span {
+		transition: $mainTransition;
+	}
+	@media (any-hover: hover){
+		 &:hover { 
+		span {
+			color: #fff;
+		}
+	  } 
+	}
+}
+
+input[type=radio] {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	left: 0;
+	top: 0;
+	visibility: hidden;
+}

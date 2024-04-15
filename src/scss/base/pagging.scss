@@ -1,0 +1,149 @@
+// Хлебные крошки ===============================================================================================================================================
+.breadcrumbs {
+	white-space: nowrap;
+	overflow: auto;
+	margin: 0 rem(-15);
+	padding: 0 rem(15);
+	display: flex;
+}
+
+.breadcrumbs::-webkit-scrollbar {
+	display: none;
+}
+
+.breadcrumbs::-webkit-scrollbar-thumb {
+	display: none;
+}
+
+.breadcrumbs__list {
+	display: flex;
+	align-items: center;
+	direction: rtl;
+
+	.breadcrumbs__item {
+		display: flex;
+		align-items: center;
+		&::after{
+			content:'/'; 
+			// width: rem(10);
+			// height: rem(1);
+			font-size: rem(14);
+			margin: 0 rem(10);
+			color: #fff;
+			// opacity: 0.7;
+		}
+		&:last-child{
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	.breadcrumbs__link {
+		font-size: rem(16);
+		font-weight: 400;
+		line-height: math.div(25.6, 16);
+		letter-spacing: 0em;
+		color: #fff;
+		text-decoration: none;
+		white-space: nowrap;
+		// margin: 0 5px;
+		transition: $mainTransition;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:hover {
+			color: #221F20;
+		}
+		@media (max-width: 480px){
+			font-size: rem(12);
+		}
+	}
+
+	.breadcrumbs__current {
+		font-size: rem(16);
+		font-weight: 400;
+		line-height: math.div(25.6, 16);
+		letter-spacing: 0em;
+		color: #fff;
+		// margin-left: 5px;
+		white-space: nowrap;
+		@media (max-width: 480px){
+			font-size: rem(12);
+			// line-height: 16px;
+		}
+	}
+}
+//========================================================================================================================================================
+
+.paggination {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.paggination__arrow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	flex: 0 0 rem(32);
+	width: rem(32);
+	height: rem(32);
+	background: #E7F2FF;
+	border-radius: 50%;
+	margin: 0 12px;
+	svg {
+		flex: 0 0 rem(12);
+		width: rem(12);
+		height: rem(8);
+	}
+	&._icon-arrow-sl-left {
+		svg {
+			transform: rotate(90deg);
+		}
+	}
+	&._icon-arrow-sl-right {
+		svg {
+			transform: rotate(-90deg);
+		}
+	}
+}
+.paggination__list {
+	display: flex;
+	align-items: center;
+	li {
+		&:not(:last-child){
+			margin-right: rem(12);
+		}
+	}
+}
+.paggination__item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: rem(16);
+	font-weight: 400;
+	line-height: math.div(22, 16);
+	letter-spacing: 0em;
+	flex: 0 0 rem(32);
+	width: rem(32);
+	height: rem(32);
+	// margin: 0 rem(8) 0 rem(8);
+	border-radius: 50%;
+	transition: $mainTransition;
+
+	@media (any-hover: hover) {
+	&:hover {
+		background: #F0F2F8;
+	}
+	}
+	&._active {
+		border: 1px solid #CEE5FF;
+	}
+}
+
+
